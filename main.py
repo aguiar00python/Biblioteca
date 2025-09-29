@@ -89,3 +89,38 @@ def remover_livro():
         print("Por favor, digite um número válido para o ID")
     except Exception as erro:
         print(f"Erro ao tentar excluir livro: {erro}")
+
+#Etapa 6 - menu da tabela 
+def menu():
+    while True:
+        print("\nMenu Biblioteca")
+        print("1. Cadastrar livro")
+        print("2. Listar livros")
+        print("3. Atualizar disponibilidade")
+        print("4. Remover livro")
+        print("5. Sair")
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            cadastrar_livros()
+        elif opcao == "2":
+            listar_livros()
+        elif opcao == "3":
+            try:
+                id_livro = int(input("Digite o ID do livro para atualizar disponibilidade: "))
+                alterar_disponibilidade(id_livro)
+            except ValueError:
+                print("ID inválido.")
+        elif opcao == "4":
+            try:
+                id_livro = int(input("Digite o ID do livro que deseja remover: "))
+                remover_livro(id_livro)
+            except ValueError:
+                print("ID inválido")
+        elif opcao == "5":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida")
+menu()
