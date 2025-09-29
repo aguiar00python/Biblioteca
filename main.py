@@ -37,3 +37,15 @@ def cadastrar_livros():
 cadastrar_livros()
 print("Livro cadastrado com sucesso!")
 
+#ETAPA 3 -  listando livros
+def listar_livros():
+    cursor.execute("SELECT * FROM Biblioteca")
+    livros = cursor.fetchall()
+    if not livros:
+        print("Não tem livros")
+    else:
+        print("Lista de livros:")
+        for livro in livros:
+            id, titulo, autor, ano, disponivel = livro
+            print(f"ID: {id} | Título: {titulo} | Autor: {autor} | Ano: {ano} | Disponível: {disponivel}")
+
