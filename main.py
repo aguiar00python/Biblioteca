@@ -74,3 +74,18 @@ def alterar_disponibilidade(id_livro):
     conexao.commit()
     print(f"Disponibilidade do livro ID {id_livro} alterada para '{novo_valor}'.")
 
+# Etapa 5 - removendo livros
+def remover_livro():
+    try:
+        id_livro = int(input("Digite o ID do livro que deseja remover: "))
+        cursor.execute("DELETE FROM Biblioteca WHERE id = ?", (id_livro,))
+        conexao.commit()
+
+        if cursor.rowcount > 0: # Exibe quantas linhas foram deletadas
+            print("Livro removido com sucesso!")
+        else:
+            print("Nenhum livro encontrado com o ID fornecido")
+    except ValueError:
+        print("Por favor, digite um número válido para o ID")
+    except Exception as erro:
+        print(f"Erro ao tentar excluir livro: {erro}")
